@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PohybStrava.Models.Activity>
+
+@{
+    ViewData["Title"] = "Denní přehled aktivit";
+}
+
+<body>
+    <div id="sirkatextu">
+
+        <h3 id="tabulkynadpis">Sportovní aktivity - denní součty</h3>
+
+        <table class="table" id="centrovanitabulky">
+            <thead>
+                <tr>
+                    <th>
+                        Datum (den.měsíc.rok)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Distance)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Elevation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EnergyActivity)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Day.@item.Month.@item.Year
+                        </td>
+                        <td>
+                            @item.DistanceSum
+                        </td>
+                        <td>
+                            @item.ElevationSum
+                        </td>
+                        <td>
+                            @item.EnergyActivityTotal
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <a asp-action="Index" class="pridat-tlacitko">Zpět na denní hodnoty</a>
+    </div>
+</body>

@@ -1,0 +1,245 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PohybStrava
+build_property.RootNamespace = PohybStrava
+build_property.ProjectDir = C:\Users\Pavel\Documents\MEGA\05-Projekt\Projekt vlastni\PohybStrava-konecna-verze-uprava-vylepseni-Ben\PohybStrava\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Pavel\Documents\MEGA\05-Projekt\Projekt vlastni\PohybStrava-konecna-verze-uprava-vylepseni-Ben\PohybStrava
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Account/Administration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pbmlzdHJhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Account/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Account/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Account/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Account/Overview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxPdmVydmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Activities/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdGllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Activities/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdGllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Activities/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdGllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Activities/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdGllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Activities/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdGllc1xFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Activities/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdGllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Activities/MonthActivitiesOverview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdGllc1xNb250aEFjdGl2aXRpZXNPdmVydmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Activities/SumActivitiesDay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdGllc1xTdW1BY3Rpdml0aWVzRGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Diets/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlldHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Diets/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlldHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Diets/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlldHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Diets/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlldHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Diets/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlldHNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Diets/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlldHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Diets/MonthDietsOverview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlldHNcTW9udGhEaWV0c092ZXJ2aWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Diets/SumDietsDay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlldHNcU3VtRGlldHNEYXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/EnergyBalance/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5lcmd5QmFsYW5jZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/EnergyBalance/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5lcmd5QmFsYW5jZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/EnergyBalance/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5lcmd5QmFsYW5jZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/EnergyBalance/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5lcmd5QmFsYW5jZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/EnergyBalance/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5lcmd5QmFsYW5jZVxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/EnergyBalance/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5lcmd5QmFsYW5jZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/FoodDatabase/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZERhdGFiYXNlXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/FoodDatabase/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZERhdGFiYXNlXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/FoodDatabase/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZERhdGFiYXNlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/FoodDatabase/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZERhdGFiYXNlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/StatsResponse/AverageUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHNSZXNwb25zZVxBdmVyYWdlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/StatsResponse/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHNSZXNwb25zZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/StatsResponse/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHNSZXNwb25zZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/StatsResponse/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHNSZXNwb25zZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/StatsResponse/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHNSZXNwb25zZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/StatsResponse/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHNSZXNwb25zZVxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/StatsResponse/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHNSZXNwb25zZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Users/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Pavel/Documents/MEGA/05-Projekt/Projekt vlastni/PohybStrava-konecna-verze-uprava-vylepseni-Ben/PohybStrava/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-xrx4weniqv

@@ -1,0 +1,63 @@
+﻿@model PohybStrava.Models.Activity
+
+@{
+    ViewData["Title"] = "Smazat aktivitu";
+}
+
+<body>
+    <div id="sirkatextu">
+        <h3>Opravdu chcete aktivitu smazat?</h3>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DateActivity)
+                </dt>
+                <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateActivity)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Trail)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Trail)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Distance)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Distance)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Elevation)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Elevation)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Time)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Time)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Pace)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Pace)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EnergyActivity)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EnergyActivity)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ActivityId" />
+                <input type="submit" value="Smazat" class="pridat-tlacitko" /> |
+                <a asp-action="Index" class="pridat-tlacitko">Zpět</a>
+            </form>
+        </div>
+
+</body>

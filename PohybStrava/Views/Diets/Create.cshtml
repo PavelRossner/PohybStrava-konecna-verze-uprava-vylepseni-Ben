@@ -1,0 +1,65 @@
+﻿@model PohybStrava.Models.Diet
+
+@{
+    ViewData["Title"] = "Přidat záznam";
+}
+
+<body>
+    <div id="sirkatextuhlavnistrana">
+
+        @if (this.Context.User.IsInRole("Admin") == false)
+
+        {
+            <h3>Přidejte informace o stravě</h3>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@*                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>*@
+                        <div class="form-group">
+                            <label asp-for="DateDiet" class="control-label"></label>
+                            <input asp-for="DateDiet" class="form-control" />
+                            <span asp-validation-for="DateDiet" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Food" class="control-label"></label>
+                            <input asp-for="Food" class="form-control" />
+                            <span asp-validation-for="Food" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EnergyDiet" class="control-label"></label>
+                            <input asp-for="EnergyDiet" class="form-control" />
+                            <span asp-validation-for="EnergyDiet" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Amount" class="control-label"></label>
+                            <input asp-for="Amount" class="form-control" />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="pridat-tlacitko" value="Vytvořit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <p></p>
+            <div>
+                <a asp-action="Index" class="pridat-tlacitko">Zpět</a>
+            </div>
+        }
+
+        @if (this.Context.User.IsInRole("Admin"))
+        {
+            <p>Admin nemůže data upravovat. Přihlaste se jako uživatel.</p>
+            <p></p>
+            <div>
+                <a asp-action="Index" class="pridat-tlacitko">Zpět</a>
+            </div>
+        }
+    </div>
+</body>

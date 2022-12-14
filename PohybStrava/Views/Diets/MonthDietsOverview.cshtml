@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PohybStrava.Models.Response.DietMonthlyOverviewResponse>
+
+@{
+    ViewData["Title"] = "Měsíční přehled stravy";
+}
+
+<body>
+    <div id="sirkatextu">
+        <h3 id="tabulkynadpis">Strava - měsíční přehledy</h3>
+
+        <table class="table" id="centrovanitabulky">
+            <thead>
+                <tr>
+                    <th>
+                        Month/year
+                    </th>
+                    <th>
+                        Energy (kcal)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PohybStrava.Models.Response.DietMonthlyOverviewResponse item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Month/@item.Year
+                        </td>
+                        <td>
+                            @item.EnergyDietSum
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <a asp-action="Index" class="pridat-tlacitko">Zpět na denní hodnoty</a>
+    </div>
+</body>
+

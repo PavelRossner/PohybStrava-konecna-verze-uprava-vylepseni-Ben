@@ -1,0 +1,49 @@
+﻿@model PohybStrava.Models.Diet
+
+@{
+    ViewData["Title"] = "Podrobnosti";
+}
+
+<body>
+    <div id="sirkatextuhlavnistrana">
+        <h3>Podrobnosti</h3>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateDiet)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateDiet)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Food)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Food)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EnergyDiet)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EnergyDiet)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EnergyDietFoodTotal)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EnergyDietFoodTotal)
+            </dd>
+        </dl>
+
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.DietId" class="pridat-tlacitko">Upravit</a> |
+            <a asp-action="Index" class="pridat-tlacitko">Zpět</a>
+        </div>
+    </div>
+</body>

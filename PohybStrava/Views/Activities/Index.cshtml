@@ -1,0 +1,86 @@
+﻿@model IEnumerable<PohybStrava.Models.Activity>
+
+@{
+    ViewData["Title"] = "Přehled aktivit";
+}
+
+<body>
+    <div id="sirkatextu">
+        <h3 id="tabulkynadpis">Přehled sportovních aktivit - denní hodnoty</h3>
+        <p>
+            <a class="pridat-tlacitko" asp-action="Create">Přidat aktivitu</a>
+        </p>
+        <p>
+            Zadejte informace o sportovní aktivitě kliknutím na tlačítko "Přidat aktivitu".
+        </p>
+        <table class="table" id="centrovanitabulky">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateActivity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Trail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Distance)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Elevation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Time)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pace)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EnergyActivity)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateActivity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Trail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Distance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Elevation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pace)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EnergyActivity)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" class="pridat-tlacitko" asp-route-id="@item.ActivityId">Upravit</a> |
+                            <a asp-action="Details" class="pridat-tlacitko" asp-route-id="@item.ActivityId">Detaily</a> |
+                            <a asp-action="Delete" class="pridat-tlacitko" asp-route-id="@item.ActivityId">Smazat</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        <br />
+
+        <div class="d-flex justify-content-left align-items-center container h-100">
+            <a asp-action="SumActivitiesDay" class="pridat-tlacitko">Denní součty</a> |
+            <a asp-action="MonthActivitiesOverview" class="pridat-tlacitko">Měsíční přehledy</a> |
+            <a class="pridat-tlacitko" asp-controller="EnergyBalance" asp-action="Index" target="_blank">Energetická bilance</a>
+        </div>
+    </div>
+</body>

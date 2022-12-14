@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PohybStrava.Models.FoodDatabase>
+
+@{
+    ViewData["Title"] = "Přehled energetické hodnoty potravin";
+}
+
+<body>
+    <div id="sirkatextu">
+        <h3 id="tabulkynadpis">Přehled energetické hodnoty vybraných potravin</h3>
+        <p>
+            <a class="pridat-tlacitko pozice-tlacitko" asp-action="Create">Přidat položku</a>
+        </p>
+        <p>
+            Zadejte údaje o energetické hodnotě potravin kliknutím na tlačítko "Přidat položku". Údaje lze získat např.
+            na <a href="https://www.kaloricketabulky.cz/tabulka-potravin" target="_blank">těchto webových stránkách. </a>
+        </p>
+        <table class="table" id="centrovanitabulky">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FoodItem)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Unit)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FoodDatabaseItem)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Note)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FoodItem)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Unit)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FoodDatabaseItem)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Note)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" class="pridat-tlacitko" asp-route-id="@item.FoodDatabaseId">Upravit</a> |
+                            <a asp-action="Delete" class="pridat-tlacitko" asp-route-id="@item.FoodDatabaseId">Smazat</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

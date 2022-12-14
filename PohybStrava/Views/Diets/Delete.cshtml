@@ -1,0 +1,52 @@
+﻿@model PohybStrava.Models.Diet
+
+@{
+    ViewData["Title"] = "Smazat záznam";
+}
+
+<body>
+    <div id="sirkatextuhlavnistrana">
+        <h3>Opravdu chcete záznam smazat?</h3>
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DateDiet)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DateDiet)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Food)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Food)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EnergyDiet)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EnergyDiet)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Amount)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Amount)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EnergyDietFoodTotal)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EnergyDietFoodTotal)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="DietId" />
+                <input type="submit" value="Smazat" class="pridat-tlacitko" /> |
+                <a asp-action="Index" class="pridat-tlacitko">Zpět</a>
+            </form>
+        </div>
+    </div>
+</body>

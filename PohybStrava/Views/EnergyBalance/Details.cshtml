@@ -1,0 +1,56 @@
+﻿@model EnergyBalance
+
+@{
+    ViewData["Title"] = "Podrobnosti";
+}
+
+<body>
+    <div id="sirkatextu">
+        <div>
+            <h3>Podrobnosti</h3>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DietDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DietDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EnergyDietTotal)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EnergyDietTotal)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EnergyActivitesTotal)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EnergyActivitesTotal)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.BMR)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.BMR)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EnergyBalanceTotal)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EnergyBalanceTotal)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.EnergyBalanceId" class="pridat-tlacitko">Upravit</a> |
+            <a asp-action="Index" class="pridat-tlacitko">Zpět</a>
+        </div>
+    </div>
+</body>

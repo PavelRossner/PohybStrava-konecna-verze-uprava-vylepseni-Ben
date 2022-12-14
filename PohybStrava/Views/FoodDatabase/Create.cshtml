@@ -1,0 +1,47 @@
+﻿@model PohybStrava.Models.FoodDatabase
+
+@{
+    ViewData["Title"] = "Přidat záznam";
+}
+
+<body>
+    <div id="sirkatextuhlavnistrana">
+        <h3>Zadejte informace o energetické hodnotě potravin</h3>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FoodItem" class="control-label"></label>
+                        <input asp-for="FoodItem" class="form-control" />
+                        <span asp-validation-for="FoodItem" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Unit" class="control-label"></label>
+                        <input asp-for="Unit" class="form-control" />
+                        <span asp-validation-for="Unit" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FoodDatabaseItem" class="control-label"></label>
+                        <input asp-for="FoodDatabaseItem" class="form-control" />
+                        <span asp-validation-for="FoodDatabaseItem" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Note" class="control-label"></label>
+                        <textarea asp-for="Note" class="form-control"></textarea>
+                        <span asp-validation-for="Note" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="pridat-tlacitko" value="Vytvořit" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <p></p>
+        <div>
+            <a asp-action="Index" class="pridat-tlacitko">Zpět</a>
+        </div>
+    </div>
+</body>
+
