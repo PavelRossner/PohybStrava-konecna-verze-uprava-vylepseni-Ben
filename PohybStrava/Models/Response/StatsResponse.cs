@@ -8,7 +8,11 @@ namespace PohybStrava.Models.Response
 {
     //[Keyless]
     public class StatsResponse:Stats
-    {      
+    {
+        [Display(Name = "Pohlaví (muž/žena)")]
+        public string Gender { get; set; } = "";
+
+
         private double bmi;
         private double bmr;
 

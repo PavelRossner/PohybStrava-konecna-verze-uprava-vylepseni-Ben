@@ -11,9 +11,6 @@ namespace PohybStrava.Models
         
         public string UserId { get; set; }
 
-        //[Display(Name = "E-mail")]
-        //public string Email { get; set; }
-
         [Display(Name = "Datum")]
         public DateTime DateDiet { get; set; }
 
@@ -25,17 +22,6 @@ namespace PohybStrava.Models
 
         [Display(Name = "Množství")]
         public double Amount { get; set; }
-
-        //public int EnergyDietSum { get; set; }
-
-        [Display(Name = "Energie celkem (kcal)")]
-        public double EnergyDietFoodTotal => (EnergyDiet * Amount);
-
-        //public int Day => int.Parse(DateDiet.ToString("dd"));
-
-        //public int Month => int.Parse(DateDiet.ToString("MM"));
-
-        //public int Year => int.Parse(DateDiet.ToString("yyyy"));
 
         [ForeignKey(nameof(UserId))]
         public virtual User User { get; set; }

@@ -25,35 +25,10 @@ namespace PohybStrava.Models
         [Display(Name = "Datum narození")]
         public DateTime DateOfBirth { get; set; }
 
-        //public int day;
-        //public int month;
-        //public int year;
-
-
-        //public int Day
-        //{
-        //    get { return int.Parse(DateOfBirth.ToString("dd")); }
-        //    set { day = value; }
-        //}
-
-        //[Display(Name = "Měsíc")]
-        //public int Month
-        //{
-        //    get { return int.Parse(DateOfBirth.ToString("MM")); }
-        //    set { month = value; }
-        //}
-
-        //public int Year
-        //{
-        //    get { return int.Parse(DateOfBirth.ToString("yyyy")); }
-        //    set { year = value; }
-        //}
-
-
         //Navigation properties
         public virtual ICollection<Diet> Diet { get; set; } = new HashSet<Diet>();
         public virtual ICollection<Activity> Activities { get; set; } = new HashSet<Activity>();
-        public virtual ICollection<StatsResponse> StatsResponse { get; set; } = new HashSet<StatsResponse>();
+        public virtual ICollection<Stats> Stats { get; set; } = new HashSet<Stats>();
         public virtual ICollection<FoodDatabase> FoodDatabase { get; set; } = new HashSet<FoodDatabase>();
 
     }

@@ -16,9 +16,6 @@ namespace PohybStrava.Models
         [Display(Name = "Datum")]
         public DateTime UserDate { get; set; }
 
-        //[Display(Name = "Email")]
-        //public string Email { get; set; } = "";
-
         [Display(Name = "Věk")]
         public double Age { get; set; }
 
@@ -28,7 +25,6 @@ namespace PohybStrava.Models
         [Display(Name = "Výška (cm)")]
         public double Height { get; set; }
 
-        [Display(Name = "Pohlaví (muž/žena)")]
-        public override string Gender { get; set; } = "";
+
     }
 }

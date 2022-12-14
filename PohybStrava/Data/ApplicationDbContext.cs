@@ -18,7 +18,7 @@ namespace PohybStrava.Data
         public DbSet<Diet> Diet { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<EnergyBalanceResponse> EnergyBalance { get; set; }
-        public DbSet<StatsResponse> Stats { get; set; }
+        public DbSet<Stats> Stats { get; set; }
         public DbSet<FoodDatabase> FoodDatabase { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -37,9 +37,9 @@ namespace PohybStrava.Data
             .HasForeignKey(m => m.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Entity<StatsResponse>()
+            builder.Entity<Stats>()
             .HasOne(c => c.User)
-            .WithMany(t => t.StatsResponse)
+            .WithMany(t => t.Stats)
             .HasForeignKey(m => m.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 

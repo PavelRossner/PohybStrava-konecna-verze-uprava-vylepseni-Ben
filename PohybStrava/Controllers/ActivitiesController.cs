@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PohybStrava.Data;
 using PohybStrava.Models;
+using PohybStrava.Models.Response;
 
 namespace PohybStrava.Controllers
 {
@@ -183,7 +184,7 @@ namespace PohybStrava.Controllers
             }
 
             var result =
-                from s in db.Activities
+                from s in ActivityResponse
                 group s by new { date = new DateTime(s.DateActivity.Year, s.DateActivity.Month, s.DateActivity.Day) } into g
                 select new Activity
                 {

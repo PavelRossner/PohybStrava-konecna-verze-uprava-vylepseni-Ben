@@ -200,10 +200,10 @@ namespace PohybStrava.Controllers
             var result =
                 from s in db.Diet
                 group s by new { date = new DateTime(s.DateDiet.Year, s.DateDiet.Month, s.DateDiet.Day) } into g
-                select new DietMonthlyOverviewResponse
+                select new DietResponse
                 {
                     DateDiet = g.Key.date,
-                    EnergyDietSum = (int)g.Sum(z => z.EnergyDietFoodTotal)
+                    EnergyDietSum = (int)g.Sum(z => z.EnergyDiet)
                 };
 
             return View(result);
@@ -222,10 +222,10 @@ namespace PohybStrava.Controllers
             var result =
                 from s in db.Diet
                 group s by new { date = new DateTime(s.DateDiet.Year, s.DateDiet.Month, 1) } into g
-                select new DietMonthlyOverviewResponse
+                select new DietResponse
                 {
                     DateDiet = g.Key.date,
-                    EnergyDietSum = (int)g.Sum(z => z.EnergyDietFoodTotal)
+                    EnergyDietSum = (int)g.Sum(z => z.EnergyDiet)
                 };
 
             return View(result);
