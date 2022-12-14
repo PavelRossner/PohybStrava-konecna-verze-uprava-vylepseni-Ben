@@ -74,7 +74,7 @@ namespace PohybStrava.Controllers
                                                              .Sum(d => d.EnergyDiet);
 
                 // Get all athletes for the date and current user and for those subjects calculate sum of basal metabolism
-                output.BMR = db.StatsResponse.Where(u => u.UserId == databaseUser && u.UserDate.Day == dt.Day && u.UserDate.Month == dt.Month && u.UserDate.Year == dt.Year)
+                output.BMR = db.Stats.Where(u => u.UserId == databaseUser && u.UserDate.Day == dt.Day && u.UserDate.Month == dt.Month && u.UserDate.Year == dt.Year)
                                           .Sum(u => u.BMR);
 
                 // Return the resulting PrijemVydej
