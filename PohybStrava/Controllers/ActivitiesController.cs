@@ -16,11 +16,6 @@ namespace PohybStrava.Controllers
     {
         private readonly ApplicationDbContext db;
 
-        public ActivitiesController(ApplicationDbContext context)
-        {
-            db = context;
-        }
-
         // GET: Activities
         public async Task<IActionResult> Index()
         {
@@ -34,7 +29,7 @@ namespace PohybStrava.Controllers
                 return RedirectToAction("Error", "Activities");
             }
 
-            return View(await db.Activities.OrderBy(d => d.DateActivity).ToList());
+            return View(await db.Activities.OrderBy(d => d.DateActivity).ToListAsync());
         }
 
         // GET: Activities/Details/5
@@ -183,10 +178,10 @@ namespace PohybStrava.Controllers
                 return RedirectToAction("Error", "Activities");
             }
 
-            var result =
-                from s in ActivityResponse
+            IQueryable<Activity> result =
+                from s in db.Activities
                 group s by new { date = new DateTime(s.DateActivity.Year, s.DateActivity.Month, s.DateActivity.Day) } into g
-                select new Activity
+                select new ActivityResponse
                 {
                     DateActivity = g.Key.date,
                     DistanceSum = (int)g.Sum(x => x.Distance),
@@ -206,15 +201,15 @@ namespace PohybStrava.Controllers
                 return RedirectToAction("Error", "Activities");
             }
 
-            var result =
-               from s in db.Activities
+            IQueryable<Activity> result =
+               from s in db.Activities      //přepsat do LINQ db.Activities.GroupBy...
                group s by new { date = new DateTime(s.DateActivity.Year, s.DateActivity.Month, 1) } into g
-               select new Activity
+               select new ActivityResponse      //na vstupu selectu je kolekce                 //Activity je objekt
                {
                    DateActivity = g.Key.date,
                    DistanceSum = (int)g.Sum(x => x.Distance),
                    ElevationSum = (int)g.Sum(y => y.Elevation),
-                   EnergyActivityTotal = (int)g.Sum(z => z.EnergyActivity)
+                   EnergyActivityTotal = (int)g.Sum(z => z.EnergyActivity)  //na výstupu je model datového typu Activity
                };
 
             return View(result);

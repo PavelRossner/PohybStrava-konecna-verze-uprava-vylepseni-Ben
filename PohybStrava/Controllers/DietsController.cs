@@ -197,7 +197,7 @@ namespace PohybStrava.Controllers
                 return RedirectToAction("Error", "Diets");
             }
 
-            var result =
+            IQueryable<DietResponse> result =
                 from s in db.Diet
                 group s by new { date = new DateTime(s.DateDiet.Year, s.DateDiet.Month, s.DateDiet.Day) } into g
                 select new DietResponse
@@ -219,7 +219,7 @@ namespace PohybStrava.Controllers
                 return RedirectToAction("Error", "Diets");
             }
 
-            var result =
+            IQueryable<Diet> result =
                 from s in db.Diet
                 group s by new { date = new DateTime(s.DateDiet.Year, s.DateDiet.Month, 1) } into g
                 select new DietResponse

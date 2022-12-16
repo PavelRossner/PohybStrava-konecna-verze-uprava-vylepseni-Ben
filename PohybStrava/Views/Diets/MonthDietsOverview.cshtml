@@ -1,4 +1,5 @@
-﻿@model IEnumerable<PohybStrava.Models.Response.DietMonthlyOverviewResponse>
+﻿@using PohybStrava.Models.Response;
+@model IEnumerable<PohybStrava.Models.Response.DietResponse>
 
 @{
     ViewData["Title"] = "Měsíční přehled stravy";
@@ -19,9 +20,9 @@
                     </th>
                     <th></th>
                 </tr>
-            </thead>
+            </thead>B
             <tbody>
-                @foreach (PohybStrava.Models.Response.DietMonthlyOverviewResponse item in Model)
+                @foreach (PohybStrava.Models.Response.DietResponse item in Model)
                 {
                     <tr>
                         <td>

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Primitives;
@@ -75,7 +76,10 @@ namespace PohybStrava.Controllers
 
                 // Get all athletes for the date and current user and for those subjects calculate sum of basal metabolism
                 output.BMR = db.Stats.Where(u => u.UserId == databaseUser && u.UserDate.Day == dt.Day && u.UserDate.Month == dt.Month && u.UserDate.Year == dt.Year)
-                                          .Sum(u => u.BMR);
+                                          .Sum(u => Math.Round(655.0955 + 9.5634 * u.Weight + 1.8496 * u.Height - 4.6756 * u.Age, 0));
+
+
+                //DODELAT POHLAVI
 
                 // Return the resulting PrijemVydej
                 return output;

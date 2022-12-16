@@ -35,5 +35,6 @@ namespace PohybStrava.Models.Response
         [Display(Name = "Vydaná energie (kcal)")]
         public int EnergyActivityTotal { get; set; }
 
+
     }
 }
