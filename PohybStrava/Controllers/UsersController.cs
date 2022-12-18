@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PohybStrava.Data;
 using PohybStrava.Models;
@@ -9,24 +10,35 @@ namespace PohybStrava.Controllers
     {
         private readonly ApplicationDbContext db;
 
-        public UsersController(ApplicationDbContext context)
+        public UsersController(ApplicationDbContext Db)
         {
-            db = context;
+            db = Db;
         }
 
 
         // GET: Users
         public IActionResult Index()
         {
-            bool user = db.User.Any(u => u.Email == this.User.Identity.Name);
-            if (user == false)
+            var Id = User.Identity.GetUserId();
+            User user = db.User.FirstOrDefault(u => u.Id == Id);
+
+            if (user == null)
             {
                 return RedirectToAction("Error", "Users");
             }
 
-            var users = db.User.Where(u => u.Email == this.User.Identity.Name || User.Identity.Name.Contains("admin"));
+            if (User.Identity.Name.Contains("admin"))
 
-            return View(users);
+            {
+                return View(db.User.ToList());
+            }
+
+            else
+
+            {
+                return View((db.User.Where(u => u.Id == Id)).ToList());
+            }
+
         }
 
 

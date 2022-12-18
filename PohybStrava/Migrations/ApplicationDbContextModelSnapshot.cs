@@ -17,7 +17,7 @@ namespace PohybStrava.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "6.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -166,32 +166,14 @@ namespace PohybStrava.Migrations
                     b.Property<DateTime>("DateActivity")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Day")
-                        .HasColumnType("int");
-
                     b.Property<double>("Distance")
                         .HasColumnType("float");
-
-                    b.Property<int>("DistanceSum")
-                        .HasColumnType("int");
 
                     b.Property<double>("Elevation")
                         .HasColumnType("float");
 
-                    b.Property<int>("ElevationSum")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("EnergyActivity")
                         .HasColumnType("float");
-
-                    b.Property<int>("EnergyActivityTotal")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
 
                     b.Property<double>("Pace")
                         .HasColumnType("float");
@@ -204,9 +186,6 @@ namespace PohybStrava.Migrations
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
 
                     b.HasKey("ActivityId");
 
@@ -229,84 +208,20 @@ namespace PohybStrava.Migrations
                     b.Property<DateTime>("DateDiet")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Day")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("EnergyDiet")
                         .HasColumnType("float");
-
-                    b.Property<double>("EnergyDietFoodTotal")
-                        .HasColumnType("float");
-
-                    b.Property<int>("EnergyDietSum")
-                        .HasColumnType("int");
 
                     b.Property<string>("Food")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
 
                     b.HasKey("DietId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Diet");
-                });
-
-            modelBuilder.Entity("PohybStrava.Models.EnergyBalance", b =>
-                {
-                    b.Property<int>("EnergyBalanceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EnergyBalanceId"), 1L, 1);
-
-                    b.Property<DateTime>("ActivityDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("BMR")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Day")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DietDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EnergyActivitesTotal")
-                        .HasColumnType("int");
-
-                    b.Property<double>("EnergyBalanceTotal")
-                        .HasColumnType("float");
-
-                    b.Property<int>("EnergyDietTotal")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("EnergyBalanceId");
-
-                    b.ToTable("EnergyBalance");
                 });
 
             modelBuilder.Entity("PohybStrava.Models.FoodDatabase", b =>
@@ -339,7 +254,7 @@ namespace PohybStrava.Migrations
                     b.ToTable("FoodDatabase");
                 });
 
-            modelBuilder.Entity("PohybStrava.Models.StatsResponse", b =>
+            modelBuilder.Entity("PohybStrava.Models.Stats", b =>
                 {
                     b.Property<int>("StatsId")
                         .ValueGeneratedOnAdd()
@@ -350,29 +265,8 @@ namespace PohybStrava.Migrations
                     b.Property<double>("Age")
                         .HasColumnType("float");
 
-                    b.Property<double>("BMI")
-                        .HasColumnType("float");
-
-                    b.Property<double>("BMIAverage")
-                        .HasColumnType("float");
-
-                    b.Property<double>("BMR")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Day")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Height")
                         .HasColumnType("float");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UserDate")
                         .HasColumnType("datetime2");
@@ -383,17 +277,11 @@ namespace PohybStrava.Migrations
                     b.Property<double>("Weight")
                         .HasColumnType("float");
 
-                    b.Property<double>("WeightAverage")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
                     b.HasKey("StatsId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("StatsResponse");
+                    b.ToTable("Stats");
                 });
 
             modelBuilder.Entity("PohybStrava.Models.User", b =>
@@ -410,9 +298,6 @@ namespace PohybStrava.Migrations
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Day")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .ValueGeneratedOnAdd()
@@ -436,9 +321,6 @@ namespace PohybStrava.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -466,9 +348,6 @@ namespace PohybStrava.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -564,10 +443,10 @@ namespace PohybStrava.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PohybStrava.Models.StatsResponse", b =>
+            modelBuilder.Entity("PohybStrava.Models.Stats", b =>
                 {
                     b.HasOne("PohybStrava.Models.User", "User")
-                        .WithMany("StatsResponse")
+                        .WithMany("Stats")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -582,7 +461,7 @@ namespace PohybStrava.Migrations
 
                     b.Navigation("FoodDatabase");
 
-                    b.Navigation("StatsResponse");
+                    b.Navigation("Stats");
                 });
 #pragma warning restore 612, 618
         }

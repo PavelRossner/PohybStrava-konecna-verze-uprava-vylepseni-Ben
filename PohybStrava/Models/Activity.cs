@@ -13,7 +13,7 @@ namespace PohybStrava.Models
         //Navigation properties
         public string UserId { get; set; }
 
-        [ForeignKey(nameof(UserId))]
+        //[ForeignKey(nameof(UserId))]
         public virtual User User { get; set; }
 
         [Display(Name = "Datum")]

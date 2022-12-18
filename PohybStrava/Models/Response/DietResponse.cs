@@ -35,13 +35,13 @@ namespace PohybStrava.Models.Response
 
         public static DietResponse GetDietResponse(Diet diet)
         {
-            return new DietResponse 
+            return new DietResponse
             {
-                EnergyDiet= diet.EnergyDiet,
-                Food= diet.Food,
+                EnergyDiet = diet.EnergyDiet,
+                Food = diet.Food,
                 DateDiet = diet.DateDiet,
                 Amount = diet.Amount,
-                
+
             };
         }
     }

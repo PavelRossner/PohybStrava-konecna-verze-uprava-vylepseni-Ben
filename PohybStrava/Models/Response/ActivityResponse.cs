@@ -36,5 +36,22 @@ namespace PohybStrava.Models.Response
         public int EnergyActivityTotal { get; set; }
 
 
+
+        public static ActivityResponse GetActivityResponse(Activity activity)
+        {
+            return new ActivityResponse
+            {
+                DateActivity = activity.DateActivity,
+                Trail = activity.Trail,
+                Distance = activity.Distance,
+                Elevation = activity.Elevation,
+                Time = activity.Time,
+                Pace = activity.Pace,
+                EnergyActivity = activity.EnergyActivity,
+
+            };
+        }
+
+
     }
 }

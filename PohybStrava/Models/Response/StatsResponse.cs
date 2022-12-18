@@ -16,6 +16,7 @@ namespace PohybStrava.Models.Response
         private double bmi;
         private double bmr;
 
+
         [Display(Name = "BMI")]
         public double BMI
         {
@@ -63,6 +64,20 @@ namespace PohybStrava.Models.Response
 
         public double WeightAverage { get; set; }
         public double BMIAverage { get; set; }
+
+        public static StatsResponse GetStatsResponse(Stats stats)
+        {
+            return new StatsResponse
+            {
+                UserDate = stats.UserDate,
+                Age = stats.Age,
+                Weight = stats.Weight,
+                Height = stats.Height,
+                //BMI = stats.BMI,
+                //BMR = stats.BMR,
+
+            };
+        }
 
     }
 }

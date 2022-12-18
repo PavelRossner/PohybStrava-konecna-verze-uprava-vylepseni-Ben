@@ -16,20 +16,40 @@ namespace PohybStrava.Controllers
     {
         private readonly ApplicationDbContext db;
 
+        public ActivitiesController(ApplicationDbContext Db)
+        {
+            db = Db;
+        }
+
         // GET: Activities
         public async Task<IActionResult> Index()
         {
             var Id = User.Identity.GetUserId();
-            
-            IQueryable<Activity> activities = db.Activities.Where(u => u.UserId == Id || User.Identity.Name.Contains("admin"));
+            User user = await db.User.FirstOrDefaultAsync(u => u.Id == Id);
 
-            bool user = db.User.Any(u => u.Email == this.User.Identity.Name);
-            if (user == false)
+            if (user == null)
+
             {
-                return RedirectToAction("Error", "Activities");
+                return RedirectToAction("Error", "Users");
             }
 
-            return View(await db.Activities.OrderBy(d => d.DateActivity).ToListAsync());
+            if (User.Identity.Name.Contains("admin"))
+
+            {
+                return View(db.Activities.OrderBy(a => a.DateActivity)
+                                         .Select(ActivityResponse.GetActivityResponse)
+                                         .ToList());
+            }
+
+            else
+
+            { 
+                return View(db.Activities.OrderBy(a => a.DateActivity)
+                                         .Where(u => u.UserId == Id)
+                                         .Select(ActivityResponse.GetActivityResponse)
+                                         .ToList());
+            }
+
         }
 
         // GET: Activities/Details/5
@@ -61,7 +81,7 @@ namespace PohybStrava.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ActivitiesId,UserId,Email,DateActivities,Trail,Distance,Elevation,Time,Pace,EnergyActivities,Day,Month,Year,DistanceSum,ElevationSum,EnergyActivitiesTotal")] Activity activities, User user)
+        public async Task<IActionResult> Create([Bind("DateActivity,Trail,Distance,Elevation,Time,Pace,EnergyActivity")] Activity activities, User user)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +116,7 @@ namespace PohybStrava.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ActivitiesId,UserId,Email,DateActivities,Trail,Distance,Elevation,Time,Pace,EnergyActivities,Day,Month,Year,DistanceSum,ElevationSum,EnergyActivitiesTotal")] Activity activities)
+        public async Task<IActionResult> Edit(int id, [Bind("DateActivity,Trail,Distance,Elevation,Time,Pace,EnergyActivity")] Activity activities)
         {
             if (id != activities.ActivityId)
             {

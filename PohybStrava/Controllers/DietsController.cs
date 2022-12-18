@@ -17,9 +17,9 @@ namespace PohybStrava.Controllers
     {
         private readonly ApplicationDbContext db;
 
-        public DietsController(ApplicationDbContext context)
+        public DietsController(ApplicationDbContext Db)
         {
-            db = context;
+            db = Db;
         }
 
         // GET: Diets
@@ -28,7 +28,6 @@ namespace PohybStrava.Controllers
             var Id = User.Identity.GetUserId();
             User user = await db.User.FirstOrDefaultAsync(u => u.Id == Id);
             
-
             if (user == null)
             {
                 return RedirectToAction("Error", "Diets");
@@ -42,7 +41,8 @@ namespace PohybStrava.Controllers
             }
             else
             {
-                return View(user.Diet.OrderBy(d => d.DateDiet)
+                return View(db.Diet.OrderBy(d => d.DateDiet)
+                                     .Where(u => u.UserId == Id)
                                      .Select(DietResponse.GetDietResponse)
                                      .ToList());
             }
