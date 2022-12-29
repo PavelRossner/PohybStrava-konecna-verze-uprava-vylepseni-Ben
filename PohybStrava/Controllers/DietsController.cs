@@ -17,17 +17,17 @@ namespace PohybStrava.Controllers
     {
         private readonly ApplicationDbContext db;
 
-        public DietsController(ApplicationDbContext Db)
+        public DietsController(ApplicationDbContext db)
         {
-            db = Db;
+            this.db = db;
         }
 
         // GET: Diets
         public async Task<IActionResult> Index()
         {
-            var Id = User.Identity.GetUserId();
+            string Id = User.Identity.GetUserId();
             User user = await db.User.FirstOrDefaultAsync(u => u.Id == Id);
-            
+
             if (user == null)
             {
                 return RedirectToAction("Error", "Diets");
@@ -46,19 +46,19 @@ namespace PohybStrava.Controllers
                                      .Select(DietResponse.GetDietResponse)
                                      .ToList());
             }
-
         }
 
         // GET: Diets/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null || db.Diet == null)
             {
                 return NotFound();
             }
 
-            var diet = await db.Diet
-                .FirstOrDefaultAsync(m => m.DietId == id);
+            var diet = db.Diet.Select(DietResponse.GetDietResponse)
+                               .FirstOrDefault(d => d.DietId == id);
+
             if (diet == null)
             {
                 return NotFound();
@@ -66,6 +66,7 @@ namespace PohybStrava.Controllers
 
             return View(diet);
         }
+
 
         // GET: Diets/Create
         public IActionResult Create()
@@ -85,9 +86,7 @@ namespace PohybStrava.Controllers
                 user = db.User.FirstOrDefault(u => u.Id == this.User.Identity.GetUserId());
 
                 user.Diet.Add(diet);
-
                 await db.SaveChangesAsync();
-
                 return RedirectToAction(nameof(Index));
             }
             return RedirectToAction(nameof(Index));
@@ -101,7 +100,8 @@ namespace PohybStrava.Controllers
                 return NotFound();
             }
 
-            var diet = await db.Diet.FindAsync(id);
+            Diet diet = await db.Diet.FindAsync(id);
+
             if (diet == null)
             {
                 return NotFound();
@@ -114,52 +114,50 @@ namespace PohybStrava.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DietId,UserId,Email,DateDiet,Food,EnergyDiet,Amount,EnergyDietSum,Day,Month,Year,EnergyDietTotal")] Diet diet)
+        public async Task<IActionResult> Edit(int id, Diet diet)
         {
             if (id != diet.DietId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    db.Update(diet);
-                    await db.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DietExists(diet.DietId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return View(diet);
             }
-            return View(diet);
+
+            Diet dbDiet = db.Diet.FirstOrDefault(d => d.DietId == id);  //trackované property
+
+            if (dbDiet == null)
+            {
+                return View(diet);
+            }
+
+            dbDiet.DateDiet = diet.DateDiet;
+            dbDiet.Food = diet.Food;
+            dbDiet.EnergyDiet = diet.EnergyDiet;
+            dbDiet.Amount = diet.Amount;
+
+            await db.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Diets/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null || db.Diet == null)
             {
                 return NotFound();
             }
 
-            var diet = await db.Diet
-                .FirstOrDefaultAsync(m => m.DietId == id);
-            if (diet == null)
+            DietResponse dietResponse = db.Diet.Select(DietResponse.GetDietResponse)
+                              .FirstOrDefault(d => d.DietId == id);
+            if (dietResponse == null)
             {
                 return NotFound();
             }
 
-            return View(diet);
+            return View(dietResponse);
         }
 
         // POST: Diets/Delete/5
@@ -171,7 +169,7 @@ namespace PohybStrava.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Diet'  is null.");
             }
-            var diet = await db.Diet.FindAsync(id);
+            Diet diet = await db.Diet.FindAsync(id);
             if (diet != null)
             {
                 db.Diet.Remove(diet);
@@ -189,7 +187,7 @@ namespace PohybStrava.Controllers
 
 
         // Diets - Day Overview
-        public IActionResult SumDietsDay()
+        public IActionResult SumDietsDay(int? id)
         {
             bool user = db.Users.Any(u => u.Email == this.User.Identity.Name);
             if (user == false)
@@ -197,21 +195,23 @@ namespace PohybStrava.Controllers
                 return RedirectToAction("Error", "Diets");
             }
 
-            IQueryable<DietResponse> result =
-                from s in db.Diet
-                group s by new { date = new DateTime(s.DateDiet.Year, s.DateDiet.Month, s.DateDiet.Day) } into g
-                select new DietResponse
-                {
-                    DateDiet = g.Key.date,
-                    EnergyDietSum = (int)g.Sum(z => z.EnergyDiet)
-                };
+            IEnumerable<DietResponse> dietResponse = db.Diet.Select(DietResponse.GetDietResponse);
+
+            IEnumerable<DietResponse> result =
+             from s in dietResponse
+             group s by new { date = new DateTime(s.DateDiet.Year, s.DateDiet.Month, s.DateDiet.Day) } into g
+             select new Models.Response.DietResponse
+             {
+                 DateDiet = g.Key.date,
+                 EnergyDietSum = (int)g.Sum(z => z.EnergyDietFoodTotal)
+             };
 
             return View(result);
         }
 
 
         // Diets - Month Overview
-        public IActionResult MonthDietsOverview()
+        public IActionResult MonthDietsOverview(int? id)
         {
             bool user = db.Users.Any(u => u.Email == this.User.Identity.Name);
             if (user == false)
@@ -219,13 +219,15 @@ namespace PohybStrava.Controllers
                 return RedirectToAction("Error", "Diets");
             }
 
-            IQueryable<Diet> result =
-                from s in db.Diet
+            IEnumerable<DietResponse> dietResponse = db.Diet.Select(DietResponse.GetDietResponse);
+
+            IEnumerable<DietResponse> result =
+                from s in dietResponse
                 group s by new { date = new DateTime(s.DateDiet.Year, s.DateDiet.Month, 1) } into g
-                select new DietResponse
+                select new Models.Response.DietResponse
                 {
                     DateDiet = g.Key.date,
-                    EnergyDietSum = (int)g.Sum(z => z.EnergyDiet)
+                    EnergyDietSum = (int)g.Sum(z => z.EnergyDietFoodTotal)
                 };
 
             return View(result);

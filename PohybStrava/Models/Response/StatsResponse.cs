@@ -69,13 +69,11 @@ namespace PohybStrava.Models.Response
         {
             return new StatsResponse
             {
+                StatsId = stats.StatsId,
                 UserDate = stats.UserDate,
                 Age = stats.Age,
                 Weight = stats.Weight,
                 Height = stats.Height,
-                //BMI = stats.BMI,
-                //BMR = stats.BMR,
-
             };
         }
 

@@ -10,9 +10,9 @@ namespace PohybStrava.Controllers
     {
         private readonly ApplicationDbContext db;
 
-        public UsersController(ApplicationDbContext Db)
+        public UsersController(ApplicationDbContext db)
         {
-            db = Db;
+           this.db = db;
         }
 
 
@@ -20,7 +20,7 @@ namespace PohybStrava.Controllers
         public IActionResult Index()
         {
             var Id = User.Identity.GetUserId();
-            User user = db.User.FirstOrDefault(u => u.Id == Id);
+            User user = this.db.User.FirstOrDefault(u => u.Id == Id);
 
             if (user == null)
             {
@@ -30,13 +30,13 @@ namespace PohybStrava.Controllers
             if (User.Identity.Name.Contains("admin"))
 
             {
-                return View(db.User.ToList());
+                return View(this.db.User.ToList());
             }
 
             else
 
             {
-                return View((db.User.Where(u => u.Id == Id)).ToList());
+                return View((this.db.User.Where(u => u.Id == Id)).ToList());
             }
 
         }
@@ -46,12 +46,12 @@ namespace PohybStrava.Controllers
         [HttpGet("Details")]
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || db.User == null)
+            if (id == null || this.db.User == null)
             {
                 return NotFound();
             }
 
-            var user = await db.User
+            var user = await this.db.User
                 .FirstOrDefaultAsync(u => u.Id == id);
             if (user == null)
             {
@@ -73,12 +73,12 @@ namespace PohybStrava.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("FirstName,LastName,DateOfBirth,Email,Gender")] User user)
         {
-            user = db.User.FirstOrDefault(u => u.Email == this.User.Identity.Name);
+            user = this.db.User.FirstOrDefault(u => u.Email == this.User.Identity.Name);
 
             if (ModelState.IsValid)
             {
-                db.Add(user);
-                db.SaveChanges();
+                this.db.Add(user);
+                this.db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
@@ -87,14 +87,15 @@ namespace PohybStrava.Controllers
         // GET: Users/Edit/5
         public IActionResult Edit(string id)
         {
-            var name = this.User.Identity.Name;
+            string name = this.User.Identity.Name;
 
-            if (id == null || db.User == null)
+            if (id == null || this.db.User == null)
             {
                 return NotFound();
             }
 
-            var user = db.User.FirstOrDefault(u => u.Id == id);
+            User user = this.db.User.FirstOrDefault(u => u.Id == id);
+
             if (user == null)
             {
                 return NotFound();
@@ -111,7 +112,7 @@ namespace PohybStrava.Controllers
             {
                 try
                 {
-                    var dbUser = db.User.FirstOrDefault(u => u.Id == id);
+                    var dbUser = this.db.User.FirstOrDefault(u => u.Id == id);
 
                     if (user.FirstName != null && user.FirstName != "")
                         dbUser.FirstName = user.FirstName;
@@ -125,7 +126,7 @@ namespace PohybStrava.Controllers
                     if (user.Gender != null && user.Gender != "")
                         dbUser.Gender = user.Gender;
 
-                    db.SaveChanges();
+                    this.db.SaveChanges();
 
                     return RedirectToAction(nameof(Index));
                 }
@@ -147,12 +148,12 @@ namespace PohybStrava.Controllers
         // GET: Users/Delete/5
         public IActionResult Delete(string id)
         {
-            if (id == null || db.User == null)
+            if (id == null || this.db.User == null)
             {
                 return NotFound();
             }
 
-            var user = db.User
+            var user = this.db.User
                 .FirstOrDefault(u => u.Id == id);
             if (user == null)
             {
@@ -167,23 +168,23 @@ namespace PohybStrava.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(string id)
         {
-            if (db.User == null)
+            if (this.db.User == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.User'  is null.");
             }
-            var user = db.User.FirstOrDefault(u => u.Id == id);
+            var user = this.db.User.FirstOrDefault(u => u.Id == id);
             if (user != null)
             {
-                db.User.Remove(user);
+                this.db.User.Remove(user);
             }
 
-            db.SaveChanges();
+            this.db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserExists(string id)
         {
-            return db.User.Any(u => u.Id == id);
+            return this.db.User.Any(u => u.Id == id);
         }
 
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PohybStrava.Models.Diet>
+﻿@model IEnumerable<PohybStrava.Models.Response.DietResponse>
 
 @{
     ViewData["Title"] = "Přehled stravy";
@@ -28,9 +28,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Amount)
                     </th>
-@*                    <th>
+                    <th>
                         @Html.DisplayNameFor(model => model.EnergyDietFoodTotal)
-                    </th>*@
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -50,9 +50,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Amount)
                         </td>
-@*                        <td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.EnergyDietFoodTotal)
-                        </td>*@
+                        </td>
                         <td>
                             <a asp-action="Edit" class="pridat-tlacitko" asp-route-id="@item.DietId">Upravit</a> |
                             <a asp-action="Details" class="pridat-tlacitko" asp-route-id="@item.DietId">Podrobnosti</a> |

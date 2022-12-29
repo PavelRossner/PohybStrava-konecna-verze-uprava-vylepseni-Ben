@@ -45,9 +45,9 @@ namespace PohybStrava.Controllers
             string databaseUser = User.Identity.GetUserId();
 
             // Get all activities for current user and from those activities select datumactivities
-            List<DateTime> activityDateTimes = db.Activities.Where(u => u.UserId == databaseUser).Select(a => a.DateActivity).ToList();
+            List<DateTime> activityDateTimes = db.Activity.Where(u => u.UserId == databaseUser).Select(a => a.DateActivity).ToList();
 
-            // Get all diest for current user and from those diets select datumdiets
+            // Get all diets for current user and from those diets select datumdiets
             List<DateTime> dietDateTimes = db.Diet.Where(u => u.UserId == databaseUser).Select(a => a.DateDiet).ToList();
 
             // Add resulting datetimes to one collection
@@ -67,7 +67,7 @@ namespace PohybStrava.Controllers
 
 
                 // Get all activities for the date and current user and for those activities calculate sum of Energie
-                output.EnergyActivitesTotal = (int)db.Activities.Where(a => a.UserId == databaseUser && a.DateActivity.Day == dt.Day && a.DateActivity.Month == dt.Month && a.DateActivity.Year == dt.Year)
+                output.EnergyActivitesTotal = (int)db.Activity.Where(a => a.UserId == databaseUser && a.DateActivity.Day == dt.Day && a.DateActivity.Month == dt.Month && a.DateActivity.Year == dt.Year)
                                                                          .Sum(a => a.EnergyActivity);
 
                 // Get all diet for the date and current user and for those diets calculate sum of celkem

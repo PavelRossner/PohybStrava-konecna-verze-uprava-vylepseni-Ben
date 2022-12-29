@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PohybStrava.Data;
@@ -16,35 +17,35 @@ namespace PohybStrava.Controllers
     {
         private readonly ApplicationDbContext db;
 
-        public ActivitiesController(ApplicationDbContext Db)
+        public ActivitiesController(ApplicationDbContext db)
         {
-            db = Db;
+            this.db = db;
         }
 
         // GET: Activities
         public async Task<IActionResult> Index()
         {
-            var Id = User.Identity.GetUserId();
+            string Id = User.Identity.GetUserId();
             User user = await db.User.FirstOrDefaultAsync(u => u.Id == Id);
 
             if (user == null)
 
             {
-                return RedirectToAction("Error", "Users");
+                return RedirectToAction("Error", "Activities");
             }
 
             if (User.Identity.Name.Contains("admin"))
 
             {
-                return View(db.Activities.OrderBy(a => a.DateActivity)
+                return View(db.Activity.OrderBy(a => a.DateActivity)
                                          .Select(ActivityResponse.GetActivityResponse)
                                          .ToList());
             }
 
             else
 
-            { 
-                return View(db.Activities.OrderBy(a => a.DateActivity)
+            {
+                return View(db.Activity.OrderBy(a => a.DateActivity)
                                          .Where(u => u.UserId == Id)
                                          .Select(ActivityResponse.GetActivityResponse)
                                          .ToList());
@@ -53,15 +54,15 @@ namespace PohybStrava.Controllers
         }
 
         // GET: Activities/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
-            if (id == null || db.Activities == null)
+            if (id == null || db.Activity == null)
             {
                 return NotFound();
             }
 
-            var activities = await db.Activities
-                .FirstOrDefaultAsync(m => m.ActivityId == id);
+            var activities = db.Activity.Select(ActivityResponse.GetActivityResponse)
+                                          .FirstOrDefault(a => a.ActivityId == id);
             if (activities == null)
             {
                 return NotFound();
@@ -81,34 +82,34 @@ namespace PohybStrava.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DateActivity,Trail,Distance,Elevation,Time,Pace,EnergyActivity")] Activity activities, User user)
+        public async Task<IActionResult> Create([Bind("ActivityId,UserId,DateActivity,Trail,Distance,Elevation,Time,Pace,EnergyActivity")] Activity activity, User user)
         {
             if (ModelState.IsValid)
             {
-                user = db.User.FirstOrDefault(u => u.Email == this.User.Identity.Name);
-                activities.UserId= user.Id;
+                user = db.User.FirstOrDefault(u => u.Id == this.User.Identity.GetUserId());
 
-                db.Add(activities);
+                user.Activities.Add(activity);
                 await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(activities);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Activities/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || db.Activities == null)
+            if (id == null || db.Activity == null)
             {
                 return NotFound();
             }
 
-            var activities = await db.Activities.FindAsync(id);
-            if (activities == null)
+            Activity activity = await db.Activity.FindAsync(id);
+
+            if (activity == null)
             {
                 return NotFound();
             }
-            return View(activities);
+            return View(activity);
         }
 
         // POST: Activities/Edit/5
@@ -116,46 +117,49 @@ namespace PohybStrava.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DateActivity,Trail,Distance,Elevation,Time,Pace,EnergyActivity")] Activity activities)
+        public IActionResult Edit(int id, Activity activity)
         {
-            if (id != activities.ActivityId)
+            if (id != activity.ActivityId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    db.Update(activities);
-                    await db.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ActivitiesExists(activities.ActivityId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return View(activity);
             }
-            return View(activities);
+
+            Activity dbActivity = this.db.Activity.FirstOrDefault(a => a.ActivityId == id);
+
+            if (dbActivity == null)
+
+            {
+                return View(activity);
+            }
+
+            dbActivity.DateActivity = activity.DateActivity;
+            dbActivity.Trail = activity.Trail;
+            dbActivity.Distance = activity.Distance;
+            dbActivity.Elevation = activity.Elevation;
+            dbActivity.Time = activity.Time;
+            dbActivity.Pace = activity.Pace;
+            dbActivity.EnergyActivity = activity.EnergyActivity;
+
+            db.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Activities/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
-            if (id == null || db.Activities == null)
+            if (id == null || db.Activity == null)
             {
                 return NotFound();
             }
 
-            var activities = await db.Activities
-                .FirstOrDefaultAsync(m => m.ActivityId == id);
+            ActivityResponse activities = db.Activity.Select(ActivityResponse.GetActivityResponse)
+                .FirstOrDefault(a => a.ActivityId == id);
+
             if (activities == null)
             {
                 return NotFound();
@@ -169,39 +173,41 @@ namespace PohybStrava.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (db.Activities == null)
+            if (db.Activity == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Activities'  is null.");
             }
-            var activities = await db.Activities.FindAsync(id);
+            Activity activities = await db.Activity.FindAsync(id);
             if (activities != null)
             {
-                db.Activities.Remove(activities);
+                db.Activity.Remove(activities);
             }
-            
+
             await db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ActivitiesExists(int id)
         {
-          return db.Activities.Any(e => e.ActivityId == id);
+            return db.Activity.Any(e => e.ActivityId == id);
         }
 
 
         // Activities - Day Overview
-        public ActionResult SumActivitiesDay()
+        public IActionResult SumActivitiesDay(int? id)
         {
-            bool user = db.User.Any(u => u.Email == this.User.Identity.Name);
+            bool user = db.Users.Any(u => u.Email == this.User.Identity.Name);
             if (user == false)
             {
                 return RedirectToAction("Error", "Activities");
             }
 
-            IQueryable<Activity> result =
-                from s in db.Activities
+            IEnumerable<ActivityResponse> activity = db.Activity.Select(ActivityResponse.GetActivityResponse);
+
+            IEnumerable<ActivityResponse> result =
+                from s in activity
                 group s by new { date = new DateTime(s.DateActivity.Year, s.DateActivity.Month, s.DateActivity.Day) } into g
-                select new ActivityResponse
+                select new Models.Response.ActivityResponse
                 {
                     DateActivity = g.Key.date,
                     DistanceSum = (int)g.Sum(x => x.Distance),
@@ -215,16 +221,18 @@ namespace PohybStrava.Controllers
         //Activities - Month Overview
         public IActionResult MonthActivitiesOverview()
         {
-            bool user = db.User.Any(u => u.Email == this.User.Identity.Name);
+            bool user = db.Users.Any(u => u.Email == this.User.Identity.Name);
             if (user == false)
             {
                 return RedirectToAction("Error", "Activities");
             }
 
-            IQueryable<Activity> result =
-               from s in db.Activities      //přepsat do LINQ db.Activities.GroupBy...
+            IEnumerable<ActivityResponse> activity = db.Activity.Select(ActivityResponse.GetActivityResponse);
+
+            IEnumerable<ActivityResponse> result =
+               from s in activity      //přepsat do LINQ db.Activities.GroupBy...
                group s by new { date = new DateTime(s.DateActivity.Year, s.DateActivity.Month, 1) } into g
-               select new ActivityResponse      //na vstupu selectu je kolekce                 //Activity je objekt
+               select new Models.Response.ActivityResponse      //na vstupu selectu je kolekce                 //ActivityResponse je objekt
                {
                    DateActivity = g.Key.date,
                    DistanceSum = (int)g.Sum(x => x.Distance),
@@ -235,8 +243,8 @@ namespace PohybStrava.Controllers
             return View(result);
         }
 
-            // GET: Diets/Error
-            public IActionResult Error()
+        // GET: Diets/Error
+        public IActionResult Error()
         {
             return View();
         }

@@ -5,9 +5,14 @@ namespace PohybStrava.Models.Response
 {
     public class DietResponse : Diet
     {
+        //public int DietId { get; set; }
+
+        public double energyDietFoodTotal;
 
         [Display(Name = "Energie celkem (kcal)")]
         public double EnergyDietFoodTotal => (EnergyDiet * Amount);
+
+        //public double EnergyDietFoodTotal { get { return (EnergyDiet * Amount); } set { energyDietFoodTotal = value; } }
 
         public int EnergyDietSum { get; set; }
 
@@ -18,30 +23,26 @@ namespace PohybStrava.Models.Response
         public int Year => int.Parse(DateDiet.ToString("yyyy"));
 
 
-
-
-
-        public static DietResponse GetMonthlyOverviewResponse(Diet diet)
-        {
-            return new DietResponse
-            {
-                EnergyDiet = diet.EnergyDiet,
-                DateDiet = diet.DateDiet,
-                Amount = diet.Amount
-            };
-        }
-
-
+        //public static DietResponse GetMonthlyOverviewResponse(Diet diet)
+        //{
+        //    return new DietResponse
+        //    {
+        //        DietId = diet.DietId,
+        //        EnergyDiet = diet.EnergyDiet,
+        //        DateDiet = diet.DateDiet,
+        //        Amount = diet.Amount
+        //    };
+        //}
 
         public static DietResponse GetDietResponse(Diet diet)
         {
             return new DietResponse
             {
-                EnergyDiet = diet.EnergyDiet,
-                Food = diet.Food,
+                DietId = diet.DietId,
                 DateDiet = diet.DateDiet,
+                Food = diet.Food,
+                EnergyDiet = diet.EnergyDiet,               
                 Amount = diet.Amount,
-
             };
         }
     }

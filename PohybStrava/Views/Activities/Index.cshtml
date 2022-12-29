@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PohybStrava.Models.Activity>
+﻿@model IEnumerable<PohybStrava.Models.Response.ActivityResponse>
 
 @{
     ViewData["Title"] = "Přehled aktivit";
@@ -67,7 +67,7 @@
                         </td>
                         <td>
                             <a asp-action="Edit" class="pridat-tlacitko" asp-route-id="@item.ActivityId">Upravit</a> |
-                            <a asp-action="Details" class="pridat-tlacitko" asp-route-id="@item.ActivityId">Detaily</a> |
+                            <a asp-action="Details" class="pridat-tlacitko" asp-route-id="@item.ActivityId">Podrobnosti</a> |
                             <a asp-action="Delete" class="pridat-tlacitko" asp-route-id="@item.ActivityId">Smazat</a>
                         </td>
                     </tr>

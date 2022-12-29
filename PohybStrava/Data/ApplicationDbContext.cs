@@ -14,7 +14,7 @@ namespace PohybStrava.Data
             : base(options)
         {
         }
-        public DbSet<Activity> Activities { get; set; }
+        public DbSet<Activity> Activity { get; set; }
         public DbSet<Diet> Diet { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Stats> Stats { get; set; }

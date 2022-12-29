@@ -191,7 +191,7 @@ namespace PohybStrava.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Activities");
+                    b.ToTable("Activity");
                 });
 
             modelBuilder.Entity("PohybStrava.Models.Diet", b =>
