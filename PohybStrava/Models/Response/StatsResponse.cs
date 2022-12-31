@@ -46,19 +46,19 @@ namespace PohybStrava.Models.Response
 
         public int Day
         {
-            get { return int.Parse(UserDate.ToString("dd")); }
+            get { return int.Parse(DateUser.ToString("dd")); }
             set { month = value; }
         }
 
         public int Month
         {
-            get { return int.Parse(UserDate.ToString("MM")); }
+            get { return int.Parse(DateUser.ToString("MM")); }
             set { month = value; }
         }
 
         public int Year
         {
-            get { return int.Parse(UserDate.ToString("yyyy")); }
+            get { return int.Parse(DateUser.ToString("yyyy")); }
             set { year = value; }
         }
 
@@ -70,7 +70,7 @@ namespace PohybStrava.Models.Response
             return new StatsResponse
             {
                 StatsId = stats.StatsId,
-                UserDate = stats.UserDate,
+                DateUser = stats.DateUser,
                 Age = stats.Age,
                 Weight = stats.Weight,
                 Height = stats.Height,

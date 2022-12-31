@@ -27,7 +27,7 @@ namespace PohybStrava.Models
 
         //Navigation properties
         public virtual ICollection<Diet> Diet { get; set; } = new HashSet<Diet>();
-        public virtual ICollection<Activity> Activities { get; set; } = new HashSet<Activity>();
+        public virtual ICollection<Activity> Activity { get; set; } = new HashSet<Activity>();
         public virtual ICollection<Stats> Stats { get; set; } = new HashSet<Stats>();
         public virtual ICollection<FoodDatabase> FoodDatabase { get; set; } = new HashSet<FoodDatabase>();
 

@@ -76,20 +76,6 @@ app.MapControllerRoute(
 
 app.MapRazorPages();
 
-
-/*
-using (var scope = app.Services.CreateScope())
-{
-    RoleManager<IdentityRole> spravceRoli = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    UserManager<IdentityUser> spravceUzivatelu = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-
-    spravceRoli.CreateAsync(new IdentityRole("admin")).Wait();
-    IdentityUser uzivatel = spravceUzivatelu.FindByEmailAsync("admin@volny.cz").Result;
-    spravceUzivatelu.AddToRoleAsync(uzivatel, "admin").Wait();
-}
-*/
-
-
 await app.RegisterAdmin("admin@volny.cz", "ABcd1234@");
 
 app.Run();

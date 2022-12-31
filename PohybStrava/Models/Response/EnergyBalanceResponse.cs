@@ -20,6 +20,9 @@ namespace PohybStrava.Models.Response
         [Display(Name = "Datum - aktivita")]
         public DateTime ActivityDate { get; set; }
 
+        [Display(Name = "Datum - uživatel")]
+        public DateTime UserDate { get; set; }
+
 
         [Display(Name = "Příjem energie")]
         public int EnergyDietTotal { get; set; }
@@ -60,5 +63,10 @@ namespace PohybStrava.Models.Response
             set { year = value; }
         }
 
+    }
+
+    public class EnergyBalanceListResponse
+    {
+        public List<EnergyBalanceResponse> EnergyBalanceList { get; set; }
     }
 }

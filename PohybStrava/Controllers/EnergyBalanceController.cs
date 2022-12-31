@@ -25,34 +25,39 @@ namespace PohybStrava.Controllers
     {
         private readonly ApplicationDbContext db;
 
-        public EnergyBalanceController(ApplicationDbContext context)
+        public EnergyBalanceController(ApplicationDbContext db)
         {
-            db = context;
+            this.db = db;
         }
 
         // GET: EnergyBalance
         [HttpGet]
         public IActionResult Index()
-        {
-            bool user = db.User.Any(u => u.Email == this.User.Identity.Name);
-            
-            if (user == false)
+        {            
+            string Id = User.Identity.GetUserId();
+            User user = db.Users.FirstOrDefault(u => u.Id == Id);
+
+            if (user == null)
             {
                 return RedirectToAction("Error", "EnergyBalance");
             }
 
             List<DateTime> dateTimes = new List<DateTime>();
-            string databaseUser = User.Identity.GetUserId();
+            //string databaseUser = User.Identity.GetUserId();
 
             // Get all activities for current user and from those activities select datumactivities
-            List<DateTime> activityDateTimes = db.Activity.Where(u => u.UserId == databaseUser).Select(a => a.DateActivity).ToList();
+            List<DateTime> activityDateTimes = db.Activity.Where(u => u.UserId == Id).Select(a => a.DateActivity).ToList();
 
             // Get all diets for current user and from those diets select datumdiets
-            List<DateTime> dietDateTimes = db.Diet.Where(u => u.UserId == databaseUser).Select(a => a.DateDiet).ToList();
+            List<DateTime> dietDateTimes = db.Diet.Where(u => u.UserId == Id).Select(d => d.DateDiet).ToList();
+
+            // Get all user inputs and from those select datumusers
+            List<DateTime> statsDateTimes = db.Stats.Where(u => u.UserId == Id).Select(s => s.DateUser).ToList();
 
             // Add resulting datetimes to one collection
             dateTimes.AddRange(activityDateTimes);
             dateTimes.AddRange(dietDateTimes);
+            dateTimes.AddRange(statsDateTimes);
 
             // Trim hours, minutes, seconds from all datetimes and remove repeating ones (excess datetimes)
             dateTimes = dateTimes.Select(d => d.Date).Distinct().ToList();
@@ -62,24 +67,34 @@ namespace PohybStrava.Controllers
             {
                 EnergyBalanceResponse output = new EnergyBalanceResponse();
 
+                StatsResponse gender = new StatsResponse();
+
                 output.DietDate = dt;
                 output.ActivityDate = dt;
-
+                output.UserDate= dt;
 
                 // Get all activities for the date and current user and for those activities calculate sum of Energie
-                output.EnergyActivitesTotal = (int)db.Activity.Where(a => a.UserId == databaseUser && a.DateActivity.Day == dt.Day && a.DateActivity.Month == dt.Month && a.DateActivity.Year == dt.Year)
+                output.EnergyActivitesTotal = (int)db.Activity.Where(a => a.UserId == Id && a.DateActivity.Day == dt.Day && a.DateActivity.Month == dt.Month && a.DateActivity.Year == dt.Year)
                                                                          .Sum(a => a.EnergyActivity);
 
                 // Get all diet for the date and current user and for those diets calculate sum of celkem
-                output.EnergyDietTotal = (int)db.Diet.Where(d => d.UserId == databaseUser && d.DateDiet.Day == dt.Day && d.DateDiet.Month == dt.Month && d.DateDiet.Year == dt.Year)
+                output.EnergyDietTotal = (int)db.Diet.Where(d => d.UserId == Id && d.DateDiet.Day == dt.Day && d.DateDiet.Month == dt.Month && d.DateDiet.Year == dt.Year)
                                                              .Sum(d => d.EnergyDiet);
 
                 // Get all athletes for the date and current user and for those subjects calculate sum of basal metabolism
-                output.BMR = db.Stats.Where(u => u.UserId == databaseUser && u.UserDate.Day == dt.Day && u.UserDate.Month == dt.Month && u.UserDate.Year == dt.Year)
-                                          .Sum(u => Math.Round(655.0955 + 9.5634 * u.Weight + 1.8496 * u.Height - 4.6756 * u.Age, 0));
+                if (gender.Gender == "žena")
+                {
+                    output.BMR = db.Stats.Where(u => u.UserId == Id && u.DateUser.Day == dt.Day && u.DateUser.Month == dt.Month && u.DateUser.Year == dt.Year)
+                                        .Select(StatsResponse.GetStatsResponse)
+                                        .Sum(u => Math.Round(655.0955 + 9.5634 * u.Weight + 1.8496 * u.Height - 4.6756 * u.Age, 0));
+                }
 
-
-                //DODELAT POHLAVI
+                else
+                {
+                    output.BMR = db.Stats.Where(u => u.UserId == Id && u.DateUser.Day == dt.Day && u.DateUser.Month == dt.Month && u.DateUser.Year == dt.Year)
+                                         .Select(StatsResponse.GetStatsResponse)
+                                         .Sum(u => Math.Round(66.473 + 13.7516 * u.Weight + 5.0033 * u.Height - 6.755 * u.Age, 0));
+                }
 
                 // Return the resulting PrijemVydej
                 return output;
@@ -90,8 +105,7 @@ namespace PohybStrava.Controllers
                 EnergyBalanceList = energyBalance
             };
 
-            return View(response.EnergyBalanceList.OrderBy(d => d.DietDate));
-
+            return View(response.EnergyBalanceList.OrderBy(d => d.UserDate));
         }
 
     

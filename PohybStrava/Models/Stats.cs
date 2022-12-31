@@ -14,7 +14,7 @@ namespace PohybStrava.Models
         public User User { get; set; }
 
         [Display(Name = "Datum")]
-        public DateTime UserDate { get; set; }
+        public DateTime DateUser { get; set; }
 
         [Display(Name = "Věk")]
         public double Age { get; set; }

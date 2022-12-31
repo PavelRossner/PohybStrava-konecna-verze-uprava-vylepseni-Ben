@@ -41,6 +41,7 @@ namespace PohybStrava.Models.Response
         {
             return new ActivityResponse
             {
+                ActivityId= activity.ActivityId,
                 DateActivity = activity.DateActivity,
                 Trail = activity.Trail,
                 Distance = activity.Distance,

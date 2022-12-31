@@ -10,6 +10,9 @@ namespace PohybStrava.Models
         public int DietId { get; set; }
         public string UserId { get; set; }
 
+        //[ForeignKey(nameof(UserId))]
+        public virtual User User { get; set; }
+
         [Display(Name = "Datum")]
         public DateTime DateDiet { get; set; }
 
@@ -22,7 +25,5 @@ namespace PohybStrava.Models
         [Display(Name = "Množství")]
         public double Amount { get; set; }
 
-        //[ForeignKey(nameof(UserId))]
-        public virtual User User { get; set; }
     }
 }

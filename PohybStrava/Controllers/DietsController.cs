@@ -56,7 +56,7 @@ namespace PohybStrava.Controllers
                 return NotFound();
             }
 
-            var diet = db.Diet.Select(DietResponse.GetDietResponse)
+            DietResponse diet = db.Diet.Select(DietResponse.GetDietResponse)
                                .FirstOrDefault(d => d.DietId == id);
 
             if (diet == null)
@@ -205,7 +205,7 @@ namespace PohybStrava.Controllers
                  DateDiet = g.Key.date,
                  EnergyDietSum = (int)g.Sum(z => z.EnergyDietFoodTotal)
              };
-
+            result = result.OrderBy(d => d.DateDiet);
             return View(result);
         }
 
@@ -229,7 +229,7 @@ namespace PohybStrava.Controllers
                     DateDiet = g.Key.date,
                     EnergyDietSum = (int)g.Sum(z => z.EnergyDietFoodTotal)
                 };
-
+            result = result.OrderBy(d => d.DateDiet);
             return View(result);
         }
 

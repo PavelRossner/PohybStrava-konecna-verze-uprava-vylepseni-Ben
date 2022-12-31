@@ -44,7 +44,14 @@
                             @Html.DisplayFor(modelItem => item.EnergyActivitesTotal)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.BMR)
+                            @if (item.BMR == 0)
+                            {
+                                <text>Nelze určit. Údaje o uživateli nebyly zadány.</text>
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.BMR)
+                            }
                         </td>
                         @if (item.EnergyBalanceTotal > 0)
                         {

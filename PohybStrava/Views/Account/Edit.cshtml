@@ -1,4 +1,4 @@
-﻿@model PohybStrava.Models.User
+﻿@model PohybStrava.Models.RegisterViewModel
 
 @{
     ViewData["Title"] = "Úprava údajů";
@@ -24,9 +24,9 @@
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="DateOfBirth"></label>
-                        <input asp-for="DateOfBirth" class="form-control" />
-                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        <label asp-for="DateUser"></label>
+                        <input asp-for="DateUser" class="form-control" />
+                        <span asp-validation-for="DateUser" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Email"></label>

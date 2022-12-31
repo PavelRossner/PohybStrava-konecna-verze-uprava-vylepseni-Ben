@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PohybStrava.Models.Response.ActivityResponse>
+﻿@model IEnumerable<PohybStrava.Models.Activity>
 
 @{
     ViewData["Title"] = "Přehled aktivit";
@@ -16,6 +16,9 @@
         <table class="table" id="centrovanitabulky">
             <thead>
                 <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ActivityId)
+                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.DateActivity)
                     </th>
@@ -44,6 +47,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivityId)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DateActivity)
                         </td>

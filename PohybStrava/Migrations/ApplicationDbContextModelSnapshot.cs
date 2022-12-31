@@ -265,11 +265,11 @@ namespace PohybStrava.Migrations
                     b.Property<double>("Age")
                         .HasColumnType("float");
 
+                    b.Property<DateTime>("DateUser")
+                        .HasColumnType("datetime2");
+
                     b.Property<double>("Height")
                         .HasColumnType("float");
-
-                    b.Property<DateTime>("UserDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -416,7 +416,7 @@ namespace PohybStrava.Migrations
             modelBuilder.Entity("PohybStrava.Models.Activity", b =>
                 {
                     b.HasOne("PohybStrava.Models.User", "User")
-                        .WithMany("Activities")
+                        .WithMany("Activity")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -455,7 +455,7 @@ namespace PohybStrava.Migrations
 
             modelBuilder.Entity("PohybStrava.Models.User", b =>
                 {
-                    b.Navigation("Activities");
+                    b.Navigation("Activity");
 
                     b.Navigation("Diet");
 

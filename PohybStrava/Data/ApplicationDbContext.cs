@@ -26,7 +26,7 @@ namespace PohybStrava.Data
 
             builder.Entity<Activity>()
             .HasOne(c => c.User)
-            .WithMany(t => t.Activities)
+            .WithMany(t => t.Activity)
             .HasForeignKey(m => m.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 

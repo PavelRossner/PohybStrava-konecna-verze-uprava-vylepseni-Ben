@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PohybStrava.Data;
@@ -35,22 +35,18 @@ namespace PohybStrava.Controllers
             }
 
             if (User.Identity.Name.Contains("admin"))
-
             {
                 return View(db.Activity.OrderBy(a => a.DateActivity)
                                          .Select(ActivityResponse.GetActivityResponse)
                                          .ToList());
             }
-
             else
-
             {
                 return View(db.Activity.OrderBy(a => a.DateActivity)
                                          .Where(u => u.UserId == Id)
                                          .Select(ActivityResponse.GetActivityResponse)
                                          .ToList());
             }
-
         }
 
         // GET: Activities/Details/5
@@ -61,7 +57,7 @@ namespace PohybStrava.Controllers
                 return NotFound();
             }
 
-            var activities = db.Activity.Select(ActivityResponse.GetActivityResponse)
+            ActivityResponse activities = db.Activity.Select(ActivityResponse.GetActivityResponse)
                                           .FirstOrDefault(a => a.ActivityId == id);
             if (activities == null)
             {
@@ -88,7 +84,7 @@ namespace PohybStrava.Controllers
             {
                 user = db.User.FirstOrDefault(u => u.Id == this.User.Identity.GetUserId());
 
-                user.Activities.Add(activity);
+                user.Activity.Add(activity);
                 await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -214,7 +210,7 @@ namespace PohybStrava.Controllers
                     ElevationSum = (int)g.Sum(y => y.Elevation),
                     EnergyActivityTotal = (int)g.Sum(z => z.EnergyActivity)
                 };
-
+            result = result.OrderBy(d => d.DateActivity);
             return View(result);
         }
 
@@ -239,7 +235,7 @@ namespace PohybStrava.Controllers
                    ElevationSum = (int)g.Sum(y => y.Elevation),
                    EnergyActivityTotal = (int)g.Sum(z => z.EnergyActivity)  //na výstupu je model datového typu Activity
                };
-
+            result = result.OrderBy(d => d.DateActivity);
             return View(result);
         }
 

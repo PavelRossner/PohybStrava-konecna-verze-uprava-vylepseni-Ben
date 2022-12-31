@@ -22,18 +22,6 @@ namespace PohybStrava.Models.Response
 
         public int Year => int.Parse(DateDiet.ToString("yyyy"));
 
-
-        //public static DietResponse GetMonthlyOverviewResponse(Diet diet)
-        //{
-        //    return new DietResponse
-        //    {
-        //        DietId = diet.DietId,
-        //        EnergyDiet = diet.EnergyDiet,
-        //        DateDiet = diet.DateDiet,
-        //        Amount = diet.Amount
-        //    };
-        //}
-
         public static DietResponse GetDietResponse(Diet diet)
         {
             return new DietResponse

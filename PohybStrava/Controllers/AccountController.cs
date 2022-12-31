@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PohybStrava.Data;
 using PohybStrava.Models;
+using PohybStrava.Models.Response;
 using System.Security.Claims;
 using System.Security.Policy;
 
@@ -136,41 +137,96 @@ namespace PohybStrava.Controllers
 
         public IActionResult Overview()
         {
-            var users = db.User.Where(u => u.Email == this.User.Identity.Name || User.Identity.Name.Contains("admin"));
+            //List<UserResponse> users = db.User
+            //     .Where(u => u.Email == this.User.Identity.Name || User.Identity.Name.Contains("admin"))
+            //     .Select(UserResponse.GetUserResponse)
+            //     .ToList();
 
-            return View(users);
+            return RedirectToAction("Index", "Users");
         }
 
-        public IActionResult UsersDatabase()
+
+        // GET: Account/Edit/5
+        public IActionResult Edit(string id)
         {
-            return View(db.Users.ToList());
+            if (id == null || this.db.User == null)
+            {
+                return NotFound();
+            }
+
+            User user = this.db.User.FirstOrDefault(u => u.Id == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Account/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(string id, [Bind("FirstName,LastName,DateOfBirth,Email,Gender")] User user)
+        {
+            if (id != user.Id)
+
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
+            User dbUser = this.db.User.FirstOrDefault(u => u.Id == id);
+
+            if (dbUser == null)
+            {
+                return View(user);
+            }
+
+            dbUser.FirstName = user.FirstName;
+            dbUser.LastName = user.LastName;
+            dbUser.Email = user.Email;
+            dbUser.DateOfBirth = user.DateOfBirth;
+            dbUser.Gender = user.Gender;
+
+            this.db.SaveChanges();
+            return RedirectToAction(nameof(Overview));
         }
 
 
-        // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Account/Delete/5
+        public IActionResult Delete(string id)
         {
-            var user = await db.User.FirstOrDefaultAsync(m => m.Id == id);
+            if (id == null || db.User == null)
+            {
+                return NotFound();
+            }
+
+            User user = db.User.FirstOrDefault(u => u.Id == id);
 
             return View(user);
         }
 
-        // POST: Users/Delete/5
+        // POST: Account/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public IActionResult DeleteConfirmed(string id)
         {
-            var user = await db.User.FirstOrDefaultAsync(m => m.Id == id);
+            User user = db.User.FirstOrDefault(u => u.Id == id);
             if (user != null)
             {
                 db.User.Remove(user);
             }
 
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction(nameof(Overview));
         }
 
     }
 }
+
 
 
